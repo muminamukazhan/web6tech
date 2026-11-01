@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task 1 | jQuery Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="page container">
+  <span class="badge">Task 1 · Part 1</span>
+  <h1>Selectors &amp; CSS</h1>
+  <p class="lead">Select elements by ID, class and tag, then change content and styles.</p>
+  <section class="box">
+    <div id="demo">
+      <h2 id="title">Selected by ID</h2>
+      <div class="panel item">First element with class "item"</div>
+      <div class="panel item">Second element with class "item"</div>
+      <p>This is a paragraph selected by tag name.</p>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="byId">ID + .text()</button>
+      <button class="btn" id="byClass">Class + .html()</button>
+      <button class="btn" id="byTag">Tag + .css()</button>
+      <button class="btn light" id="reset">Reset</button>
+    </div>
+  </section>
+</main>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/nav.js"></script>
+<script>
+$(document).ready(function () {
+  var original = $("#demo").html();
+  $("#byId").click(function () {
+    $("#title").text("Title changed with .text()");
+  });
+  $("#byClass").click(function () {
+    $(".item").html("<strong>Changed</strong> with <em>.html()</em>");
+  });
+  $("#byTag").click(function () {
+    $("#demo p").css({
+      "background-color": "#111",
+      "color": "#fff",
+      "padding": "16px",
+      "border-radius": "14px",
+      "font-size": "22px"
+    });
+  });
+  $("#reset").click(function () {
+    $("#demo").html(original);
+  });
+});
+</script>
+</body>
+</html>
