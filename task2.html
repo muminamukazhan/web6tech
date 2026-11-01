@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task 2 | jQuery Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="page container">
+  <span class="badge">Task 2 · Part 2</span>
+  <h1>Visibility Methods</h1>
+  <p class="lead">Control a paragraph with .hide(), .show() and .toggle().</p>
+  <section class="box">
+    <div class="panel" id="paragraph">
+      <p>jQuery makes it easy to hide and show elements. Press the buttons below to control this paragraph.</p>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="hide">Hide</button>
+      <button class="btn" id="show">Show</button>
+      <button class="btn light" id="toggle">Toggle</button>
+    </div>
+  </section>
+</main>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/nav.js"></script>
+<script>
+$(document).ready(function () {
+  $("#hide").click(function () {
+    $("#paragraph").hide();
+  });
+  $("#show").click(function () {
+    $("#paragraph").show();
+  });
+  $("#toggle").click(function () {
+    $("#paragraph").toggle();
+  });
+});
+</script>
+</body>
+</html>
