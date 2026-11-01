@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task 7 | jQuery Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="page container">
+  <span class="badge">Task 7 · Part 3</span>
+  <h1>Form Interaction</h1>
+  <p class="lead">Type in the form and see your input displayed live with .val() and .text().</p>
+  <section class="box">
+    <form id="form">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com">
+      </div>
+    </form>
+    <div class="output">
+      <p><strong>Name:</strong> <span id="outName">—</span></p>
+      <p><strong>Email:</strong> <span id="outEmail">—</span></p>
+    </div>
+  </section>
+</main>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/nav.js"></script>
+<script>
+$(document).ready(function () {
+  $("#form").on("submit", function (e) {
+    e.preventDefault();
+  });
+  $("#name").on("input", function () {
+    var value = $(this).val();
+    $("#outName").text(value === "" ? "—" : value);
+  });
+  $("#email").on("input", function () {
+    var value = $(this).val();
+    $("#outEmail").text(value === "" ? "—" : value);
+  });
+});
+</script>
+</body>
+</html>
