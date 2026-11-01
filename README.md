@@ -2,7 +2,7 @@
 
 **Student:** Mumina Mukazhan  
 **Group:** SE-2530
-**Live demo:** 
+**Live demo:** https://muminamukazhan.github.io/web6tech/
 
 ## Description
 
