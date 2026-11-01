@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task 3 | jQuery Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="page container">
+  <span class="badge">Task 3 · Part 2</span>
+  <h1>Fade Methods</h1>
+  <p class="lead">Fade an image with .fadeIn(), .fadeOut() and .fadeToggle().</p>
+  <section class="box">
+    <img class="demo-img" id="photo" src="images/12.jpg" alt="NaNa">
+    <div class="btn-row">
+      <button class="btn" id="fadeIn">Fade In</button>
+      <button class="btn" id="fadeOut">Fade Out</button>
+      <button class="btn light" id="fadeToggle">Fade Toggle</button>
+    </div>
+  </section>
+</main>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/nav.js"></script>
+<script>
+$(document).ready(function () {
+  $("#fadeIn").click(function () {
+    $("#photo").fadeIn(800);
+  });
+  $("#fadeOut").click(function () {
+    $("#photo").fadeOut(800);
+  });
+  $("#fadeToggle").click(function () {
+    $("#photo").fadeToggle(800);
+  });
+});
+</script>
+</body>
+</html>
