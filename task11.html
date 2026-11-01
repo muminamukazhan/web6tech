@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task 11 | jQuery Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="page container">
+  <span class="badge">Task 11 · Part 5</span>
+  <h1>Image Gallery</h1>
+  <p class="lead">NaNa Official Arts. Thumbnails fade in and out, click a picture to enlarge it.</p>
+  <section class="box wide">
+    <div class="btn-row" style="margin-top:0">
+      <button class="btn" id="fadeInAll">Fade in all</button>
+      <button class="btn" id="fadeOutAll">Fade out all</button>
+      <button class="btn light" id="fadeToggleHalf">Toggle odd pictures</button>
+    </div>
+    <div class="gallery" id="gallery">
+      <div class="thumb" data-index="0"><img src="images/11.jpg" alt="NaNa Official Art 1"></div>
+      <div class="thumb" data-index="1"><img src="images/12.jpg" alt="NaNa Official Art 2"></div>
+      <div class="thumb" data-index="2"><img src="images/17a.jpg" alt="NaNa Official Art 3"></div>
+      <div class="thumb" data-index="3"><img src="images/18a.jpg" alt="NaNa Official Art 4"></div>
+      <div class="thumb" data-index="4"><img src="images/2a.jpg" alt="NaNa Official Art 5"></div>
+      <div class="thumb" data-index="5"><img src="images/39.jpg" alt="NaNa Official Art 6"></div>
+      <div class="thumb" data-index="6"><img src="images/9a.jpg" alt="NaNa Official Art 7"></div>
+      <div class="thumb" data-index="7"><img src="images/7a.jpg" alt="NaNa Official Art 8"></div>
+    </div>
+  </section>
+</main>
+<div class="lightbox" id="lightbox">
+  <button class="lb-btn lb-close" id="close">✕</button>
+  <button class="lb-btn lb-prev" id="prev">‹</button>
+  <button class="lb-btn lb-next" id="next">›</button>
+  <div class="lb-figure">
+    <img id="bigImg" src="" alt="">
+    <p id="caption"></p>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/nav.js"></script>
+<script>
+$(document).ready(function () {
+  var $thumbs = $(".thumb");
+  var total = $thumbs.length;
+  var current = 0;
+
+  $thumbs.hide().each(function (i) {
+    $(this).delay(i * 150).fadeIn(600);
+  });
+
+  $thumbs.hover(
+    function () {
+      $(this).stop(true).fadeTo(200, 0.7);
+    },
+    function () {
+      $(this).stop(true).fadeTo(200, 1);
+    }
+  );
+
+  $("#fadeInAll").click(function () {
+    $thumbs.each(function (i) {
+      $(this).stop(true).delay(i * 100).fadeIn(500);
+    });
+  });
+
+  $("#fadeOutAll").click(function () {
+    $thumbs.each(function (i) {
+      $(this).stop(true).delay(i * 100).fadeOut(500);
+    });
+  });
+
+  $("#fadeToggleHalf").click(function () {
+    $thumbs.filter(":even").stop(true).fadeToggle(500);
+  });
+
+  function showImage(index) {
+    current = (index + total) % total;
+    var $img = $thumbs.eq(current).find("img");
+    $("#bigImg").removeClass("zoom").attr({ src: $img.attr("src"), alt: $img.attr("alt") });
+    $("#caption").text($img.attr("alt") + " (" + (current + 1) + " / " + total + ")");
+    setTimeout(function () {
+      $("#bigImg").addClass("zoom");
+    }, 30);
+  }
+
+  $thumbs.click(function () {
+    showImage($(this).data("index"));
+    $("#lightbox").css("display", "flex").hide().fadeIn(300);
+  });
+
+  function closeBox() {
+    $("#lightbox").fadeOut(250);
+  }
+
+  $("#close").click(closeBox);
+
+  $("#lightbox").click(function (e) {
+    if (e.target === this) {
+      closeBox();
+    }
+  });
+
+  $("#next").click(function () {
+    $("#bigImg").fadeOut(150, function () {
+      showImage(current + 1);
+      $(this).fadeIn(200);
+    });
+  });
+
+  $("#prev").click(function () {
+    $("#bigImg").fadeOut(150, function () {
+      showImage(current - 1);
+      $(this).fadeIn(200);
+    });
+  });
+
+  $(document).keydown(function (e) {
+    if (!$("#lightbox").is(":visible")) {
+      return;
+    }
+    if (e.key === "Escape") {
+      closeBox();
+    } else if (e.key === "ArrowRight") {
+      $("#next").click();
+    } else if (e.key === "ArrowLeft") {
+      $("#prev").click();
+    }
+  });
+});
+</script>
+</body>
+</html>
