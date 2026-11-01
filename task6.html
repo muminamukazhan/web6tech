@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task 6 | jQuery Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="page container">
+  <span class="badge">Task 6 · Part 3</span>
+  <h1>Modifying Attributes</h1>
+  <p class="lead">Change an image's src and a link's href with .attr().</p>
+  <section class="box">
+    <img class="demo-img" id="photo" src="https://picsum.photos/id/10/900/500" alt="Demo">
+    <div class="btn-row">
+      <button class="btn" id="changeSrc">Change image src</button>
+      <button class="btn light" id="changeHref">Change link href</button>
+    </div>
+    <div class="output">
+      <p>Link: <a id="link" href="https://jquery.com" target="_blank" style="text-decoration:underline">Open link</a></p>
+      <p>Current href: <span id="hrefText"></span></p>
+    </div>
+  </section>
+</main>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/nav.js"></script>
+<script>
+$(document).ready(function () {
+  var images = [
+    "IMAGES/IMG_8888.JPG",
+    "images/IMG_7523.JPG",
+    "images/11.jpg" 
+  ];
+  var links = [
+    "https://jquery.com",
+    "https://api.jquery.com",
+    "https://www.w3schools.com/jquery/"
+  ];
+  var imgIndex = 0;
+  var linkIndex = 0;
+  $("#hrefText").text($("#link").attr("href"));
+  $("#changeSrc").click(function () {
+    imgIndex = (imgIndex + 1) % images.length;
+    $("#photo").attr("src", images[imgIndex]);
+  });
+  $("#changeHref").click(function () {
+    linkIndex = (linkIndex + 1) % links.length;
+    $("#link").attr("href", links[linkIndex]);
+    $("#hrefText").text($("#link").attr("href"));
+  });
+});
+</script>
+</body>
+</html>
