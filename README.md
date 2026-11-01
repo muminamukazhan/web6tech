@@ -1,8 +1,8 @@
 # jQuery Practice — Assignment 6
 
-Student: Mumina Mukazhan
-Group: SE-2530
-Live demo:
+**Student:** Mumina Mukazhan  
+**Group:** SE-2530
+**Live demo:** 
 
 ## Description
 
